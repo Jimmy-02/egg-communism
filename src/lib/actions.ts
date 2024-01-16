@@ -12,7 +12,7 @@ export const createPost = async (_: any, formData: FormData) => {
       throw new Error('Please fill in the title and content')
     }
 
-    await prisma.post.create({
+    await prisma?.post.create({
       data: {
         title: title as string,
         content: content as string,
@@ -33,6 +33,6 @@ export const createPost = async (_: any, formData: FormData) => {
 }
 
 export const deletePost = async (post: Post) => {
-  await prisma.post.delete({ where: { id: post.id } })
+  await prisma?.post.delete({ where: { id: post.id } })
   revalidatePath('/')
 }
