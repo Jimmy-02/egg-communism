@@ -24,6 +24,7 @@ const Page: NextPage = () => {
       toast(state.message)
       router.push('/')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state])
 
   return (
