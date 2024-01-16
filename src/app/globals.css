@@ -68,9 +68,34 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply relative box-border min-w-0 border-border selection:bg-primary selection:text-primary-foreground;
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-pretty;
+  }
+  p {
+    @apply text-balance;
+  }
+  article {
+    @apply prose prose-zinc dark:prose-invert lg:prose-xl;
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-1 w-1;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ring hover:bg-ring/80;
   }
 }
