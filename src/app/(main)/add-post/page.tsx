@@ -29,7 +29,7 @@ const Page: NextPage = () => {
 
   return (
     <div className="grid min-h-[80dvh] place-items-center">
-      <Card className="w-screen max-w-screen-sm md:max-w-screen-md">
+      <Card className="w-screen max-w-prose">
         <CardHeader>
           <CardTitle>Add new post</CardTitle>
           <CardDescription>Fill in the form below to add a new post to your blog.</CardDescription>
