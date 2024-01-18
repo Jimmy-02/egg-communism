@@ -1,17 +1,18 @@
 'use client'
 
+import type { NextPage } from 'next'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
+import { useFormState } from 'react-dom'
+import { toast } from 'sonner'
+
+import { createPost } from '@/actions/post'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { createPost } from '@/lib/actions'
-import { NextPage } from 'next'
-import { useFormState } from 'react-dom'
-import SubmitBtn from './_submit'
-import { useEffect } from 'react'
-import { toast } from 'sonner'
-import { useRouter } from 'next/navigation'
 import { Textarea } from '@/components/ui/textarea'
+import SubmitBtn from './_submit'
 
 const Page: NextPage = () => {
   const [state, action] = useFormState(createPost, {

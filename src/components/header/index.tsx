@@ -9,8 +9,7 @@ import {
 } from '@nextui-org/navbar'
 import Image from 'next/image'
 import Link from 'next/link'
-
-import { Button } from '@/components/ui/button'
+import Auth from './auth'
 import ThemeBtn from './them-btn'
 
 const Header: React.FC = () => {
@@ -33,13 +32,14 @@ const Header: React.FC = () => {
         <NavbarMenuToggle className="md:hidden" />
 
         <Link href="/" passHref legacyBehavior>
-          <NavbarBrand>
+          <NavbarBrand className="cursor-pointer">
             <Image
               src="/next.svg"
               alt="Next.js Logo"
-              width={50}
-              height={50}
-              className="dark:invert"
+              width={60}
+              height={30}
+              className="h-auto dark:invert"
+              priority
             />
           </NavbarBrand>
         </Link>
@@ -56,13 +56,13 @@ const Header: React.FC = () => {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Button color="primary" variant="ghost" asChild>
-            <Link href="#">Login</Link>
-          </Button>
+        <NavbarItem>
+          <Auth />
         </NavbarItem>
 
-        <ThemeBtn />
+        <NavbarItem>
+          <ThemeBtn />
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu className="md:hidden">

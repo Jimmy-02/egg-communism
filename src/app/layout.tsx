@@ -9,10 +9,13 @@ export const metadata: Metadata = {
 
 import ThemeProvider from '@/providers/theme-provider'
 import './globals.css'
+import AuthProvider from '@/providers/auth-provider'
 const RootLayout: NextPage<React.PropsWithChildren> = ({ children }) => (
   <html lang="en" suppressHydrationWarning>
     <body className={cn('min-h-dvh font-sans antialiased', GeistSans.variable)}>
-      <ThemeProvider>{children}</ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider>{children}</ThemeProvider>
+      </AuthProvider>
     </body>
   </html>
 )

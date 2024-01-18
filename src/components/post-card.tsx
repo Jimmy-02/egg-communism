@@ -1,30 +1,35 @@
 'use client'
 
+import { deletePost } from '@/actions/post'
+import { formatDate } from '@/lib/utils'
+import { Post } from '@prisma/client'
 import { XIcon } from 'lucide-react'
 import { Button } from './ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
-import { deletePost } from '@/lib/actions'
 
-const PostCard: React.FC<Post> = (post) => {
-  return (
-    <Card className="relative">
-      <CardHeader>
-        <CardTitle>{post.title}</CardTitle>
-        <CardDescription>{post.author?.name}</CardDescription>
-      </CardHeader>
+interface PostCardProps extends Post {
+  author: {
+    name: string
+  }
+}
 
-      <CardContent>{post.content}</CardContent>
+const PostCard: React.FC<PostCardProps> = (post) => (
+  <Card className="relative">
+    <CardHeader>
+      <CardTitle>{post.title}</CardTitle>
+      <CardDescription>
+        {post.author.name} - {formatDate(post.createdAt)}
+      </CardDescription>
+    </CardHeader>
 
-      <Button
-        variant="destructive"
-        size="icon"
-        className="absolute right-2 top-2"
-        onClick={() => deletePost(post)}
-      >
+    <CardContent>{post.content}</CardContent>
+
+    <form action={() => deletePost(post)} className="absolute right-2 top-2">
+      <Button variant="destructive" size="icon" type="submit">
         <XIcon />
       </Button>
-    </Card>
-  )
-}
+    </form>
+  </Card>
+)
 
 export default PostCard

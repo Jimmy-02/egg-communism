@@ -8,6 +8,8 @@ CREATE TABLE "Post" (
     "content" TEXT,
     "published" BOOLEAN NOT NULL DEFAULT false,
     "authorId" TEXT,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
@@ -18,7 +20,8 @@ CREATE TABLE "users" (
     "name" TEXT,
     "email" TEXT,
     "password" TEXT,
-    "role" "Role" NOT NULL DEFAULT 'USER',
+    "bio" TEXT,
+    "image" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
