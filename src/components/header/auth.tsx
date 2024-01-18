@@ -42,9 +42,11 @@ const Auth: React.FC = () => {
         <DropdownMenuSeparator />
 
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <FilePlus2Icon className="mr-2" />
-            <span>Create a new post</span>
+          <DropdownMenuItem asChild>
+            <Link href="/add-post">
+              <FilePlus2Icon className="mr-2" />
+              <span>Create a new post</span>
+            </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })}>
