@@ -1,10 +1,20 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
-import { Button } from '../ui/button'
+import { FilePlus2Icon, Loader2Icon, LogOutIcon } from 'lucide-react'
+import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { Loader2Icon } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 const Auth: React.FC = () => {
   const { data, status } = useSession()
@@ -19,10 +29,31 @@ const Auth: React.FC = () => {
     )
 
   return (
-    <Avatar>
-      <AvatarImage src={data.user.image || ''} />
-      <AvatarFallback color="primary">{data.user.name?.charAt(0)}</AvatarFallback>
-    </Avatar>
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Avatar>
+          <AvatarImage src={data.user.image || ''} />
+          <AvatarFallback color="primary">{data.user.name?.charAt(0)}</AvatarFallback>
+        </Avatar>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent>
+        <DropdownMenuLabel>{data.user.name}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <FilePlus2Icon className="mr-2" />
+            <span>Create a new post</span>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })}>
+            <LogOutIcon className="mr-2" />
+            <span>Logout</span>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

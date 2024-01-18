@@ -45,16 +45,6 @@ const Header: React.FC = () => {
         </Link>
       </NavbarContent>
 
-      <NavbarContent className="hidden md:flex" justify="center">
-        <NavbarItem>
-          <Link href="/">Home</Link>
-        </NavbarItem>
-
-        <NavbarItem>
-          <Link href="/add-post">Add Post</Link>
-        </NavbarItem>
-      </NavbarContent>
-
       <NavbarContent justify="end">
         <NavbarItem>
           <Auth />
